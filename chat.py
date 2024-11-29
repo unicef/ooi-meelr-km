@@ -143,7 +143,7 @@ llama_debug = LlamaDebugHandler(print_trace_on_end=True)
 callback_manager = CallbackManager([llama_debug])
 
 vector_store = MilvusVectorStore(
-    uri="./milvus_demo.db",
+    uri="./ooi-meelr-km/milvus_demo.db",
     collection_name="coar_collection",
     similarity_metric = "IP", #default for sparse. else use COSINE,L2. Used while index creation
     batch_size = 100, #default
@@ -154,9 +154,9 @@ vector_store = MilvusVectorStore(
 
 # loading storage context that contains our vector store
 storage_context = StorageContext.from_defaults(
-    docstore=SimpleDocumentStore.from_persist_dir(persist_dir="./coar_storage_context"),
+    docstore=SimpleDocumentStore.from_persist_dir(persist_dir="./ooi-meelr-km/coar_storage_context"),
     vector_store=vector_store,
-    index_store=SimpleIndexStore.from_persist_dir(persist_dir="./coar_storage_context"),
+    index_store=SimpleIndexStore.from_persist_dir(persist_dir="./ooi-meelr-km/coar_storage_context"),
 )
 
 # csv+json was inserted into 1 index so below returns only 1 index
