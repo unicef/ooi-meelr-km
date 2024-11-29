@@ -3,6 +3,8 @@
 from IPython.display import clear_output
 import subprocess
 import os
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 os.environ["GRADIO_ANALYTICS_ENABLED"] = "False"
 os.environ["LITERAL_API_KEY"] = "lsk_Zr7hzZASa388Pl2uYUUNzJdYHNJXznumk8tOZrvLkLE"
 MODEL_NAME = "meta-llama/Meta-Llama-3-8B-Instruct"
