@@ -9,7 +9,7 @@ os.environ["LITERAL_API_KEY"] = "lsk_Zr7hzZASa388Pl2uYUUNzJdYHNJXznumk8tOZrvLkLE
 MODEL_NAME = "meta-llama/Meta-Llama-3-8B-Instruct"
 URI = "http://ec2-3-65-2-217.eu-central-1.compute.amazonaws.com:19530"
 
-print("Installing packages for UNICEF Studio ... Please wait 5 minutes ...")
+print("Installing packages for UNICEF Studio ... Please wait 2 minutes ...")
 
 install = [
     "pip", "install",
@@ -124,7 +124,7 @@ def query_store(query_str, index, nodes, embed_model, vector_store, filters, llm
 
 ######################################
 
-print("Loading model ... Please wait 1 more minute! ...")
+print("Loading model ... Please wait a few more seconds! ...")
 
 embed_model = HuggingFaceEmbedding(
 model_name="BAAI/bge-small-en-v1.5"
