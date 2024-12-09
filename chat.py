@@ -166,6 +166,11 @@ indices = load_indices_from_storage(storage_context)
 # fetching all nodes takes time, switching it off.
 nodes = None
 
+message = "How did UNICEF build a scalable model for innovations in gender equality programmes in Malawi in 2019?"
+filters = [{'metadata_key' : 'country_name', 'metadata_value' : 'Malawi'},
+        {'metadata_key' : 'year', 'metadata_value' : 2019}]
+print(query_store(message, indices[0], nodes, embed_model, vector_store, filters, llm, callback_manager, stats = False, viz = False))
+
 # clear_output()
 
 import gradio
@@ -175,8 +180,7 @@ def process_chatbot(message, history):
     
     filters = [{'metadata_key' : 'country_name', 'metadata_value' : 'Malawi'},
            {'metadata_key' : 'year', 'metadata_value' : 2019}]
-    print(message)
-    print(query_store(message, indices[0], nodes, embed_model, vector_store, filters, llm, callback_manager, stats = False, viz = False))
+    
     return query_store(message, indices[0], nodes, embed_model, vector_store, filters, llm, callback_manager, stats = False, viz = False)
 
 pass
