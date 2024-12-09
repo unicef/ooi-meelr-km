@@ -130,7 +130,7 @@ embed_model = HuggingFaceEmbedding(
 model_name="BAAI/bge-small-en-v1.5"
 )
 
-clear_output()
+# clear_output()
 
 # set embed model for index and quering
 Settings.embed_model = embed_model
@@ -166,7 +166,7 @@ indices = load_indices_from_storage(storage_context)
 # fetching all nodes takes time, switching it off.
 nodes = None
 
-clear_output()
+# clear_output()
 
 import gradio
 gradio.strings.en["SHARE_LINK_DISPLAY"] = ""
@@ -175,7 +175,8 @@ def process_chatbot(message, history):
     
     filters = [{'metadata_key' : 'country_name', 'metadata_value' : 'Malawi'},
            {'metadata_key' : 'year', 'metadata_value' : 2019}]
-
+    print(message)
+    print(query_store(message, indices[0], nodes, embed_model, vector_store, filters, llm, callback_manager, stats = False, viz = False))
     return query_store(message, indices[0], nodes, embed_model, vector_store, filters, llm, callback_manager, stats = False, viz = False)
 
 pass
