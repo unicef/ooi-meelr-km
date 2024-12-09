@@ -166,11 +166,6 @@ indices = load_indices_from_storage(storage_context)
 # fetching all nodes takes time, switching it off.
 nodes = None
 
-message = "How did UNICEF build a scalable model for innovations in gender equality programmes in Malawi in 2019?"
-filters = [{'metadata_key' : 'country_name', 'metadata_value' : 'Malawi'},
-        {'metadata_key' : 'year', 'metadata_value' : 2019}]
-print(query_store(message, indices[0], nodes, embed_model, vector_store, filters, llm, callback_manager, stats = False, viz = False))
-
 # clear_output()
 
 import gradio
@@ -184,7 +179,7 @@ def process_chatbot(message, history):
     return query_store(message, indices[0], nodes, embed_model, vector_store, filters, llm, callback_manager, stats = False, viz = False)
 
 pass
-
+#BUG:Data incompatible with messages format. Each message should be a dictionary with 'role' and 'content' keys or a ChatMessage object."
 studio_theme = gradio.themes.Soft(
     primary_hue = "teal",
 )
@@ -192,21 +187,21 @@ studio_theme = gradio.themes.Soft(
 scene = gradio.ChatInterface(
     process_chatbot,
     type="messages",
-    # chatbot = gradio.Chatbot(
-    #     height = 325,
-    #     label = "UNICEF Studio Chat",
-    # ),
-    # textbox = gradio.Textbox(
-    #     placeholder = "Message UNICEF Chat",
-    #     container = False,
-    # ),
-    # title = None,
+    chatbot = gradio.Chatbot(
+        height = 325,
+        label = "UNICEF Studio Chat",
+    ),
+    textbox = gradio.Textbox(
+        placeholder = "Message UNICEF Chat",
+        container = False,
+    ),
+    title = None,
     theme = studio_theme,
-    # examples = None,
-    # cache_examples = False,
-    # retry_btn = None,
-    # undo_btn = "Remove Previous Message",
-    # clear_btn = "Restart Entire Chat",
-).launch()
+    examples = None,
+    cache_examples = False,
+    retry_btn = None,
+    undo_btn = "Remove Previous Message",
+    clear_btn = "Restart Entire Chat",
+)
 
-# scene.launch(quiet = True)
+scene.launch(debug=True)#(quiet = True)
