@@ -192,21 +192,21 @@ studio_theme = gradio.themes.Soft(
 scene = gradio.ChatInterface(
     process_chatbot,
     type="messages",
-    chatbot = gradio.Chatbot(
-        height = 325,
-        label = "UNICEF Studio Chat",
-    ),
-    textbox = gradio.Textbox(
-        placeholder = "Message UNICEF Chat",
-        container = False,
-    ),
-    title = None,
+    # chatbot = gradio.Chatbot(
+    #     height = 325,
+    #     label = "UNICEF Studio Chat",
+    # ),
+    # textbox = gradio.Textbox(
+    #     placeholder = "Message UNICEF Chat",
+    #     container = False,
+    # ),
+    # title = None,
     theme = studio_theme,
-    examples = None,
-    cache_examples = False,
-    retry_btn = None,
-    undo_btn = "Remove Previous Message",
-    clear_btn = "Restart Entire Chat",
-)
+    # examples = None,
+    # cache_examples = False,
+    # retry_btn = None,
+    # undo_btn = "Remove Previous Message",
+    # clear_btn = "Restart Entire Chat",
+).launch()
 
-scene.launch(quiet = True)
+# scene.launch(quiet = True)
