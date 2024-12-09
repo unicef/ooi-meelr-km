@@ -189,7 +189,7 @@ def random_response(message, history):
     return random.choice(["Yes", "No"])
 
 scene = gradio.ChatInterface(
-    fn=random_response, 
+    fn=process_chatbot, 
     type="messages"
 ).launch()
 
