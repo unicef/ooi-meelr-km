@@ -171,7 +171,7 @@ message = "How did UNICEF build a scalable model for innovations in gender equal
 filters = [{'metadata_key' : 'country_name', 'metadata_value' : 'Malawi'},
         {'metadata_key' : 'year', 'metadata_value' : 2019}]
 
-print(query_store(message, indices[0], nodes, embed_model, vector_store, filters, llm, callback_manager, stats = False, viz = False)
+print(query_store(message, indices[0], nodes, embed_model, vector_store, filters, llm, callback_manager, stats = False, viz = False))
 
 
 import gradio
