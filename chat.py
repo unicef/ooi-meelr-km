@@ -130,7 +130,7 @@ embed_model = HuggingFaceEmbedding(
 model_name="BAAI/bge-small-en-v1.5"
 )
 
-# clear_output()
+clear_output()
 
 # set embed model for index and quering
 Settings.embed_model = embed_model
@@ -166,13 +166,7 @@ indices = load_indices_from_storage(storage_context)
 # fetching all nodes takes time, switching it off.
 nodes = None
 
-# clear_output()
-message = "How did UNICEF build a scalable model for innovations in gender equality programmes in Malawi in 2019?"
-filters = [{'metadata_key' : 'country_name', 'metadata_value' : 'Malawi'},
-        {'metadata_key' : 'year', 'metadata_value' : 2019}]
-
-print(query_store(message, indices[0], nodes, embed_model, vector_store, filters, llm, callback_manager, stats = False, viz = False))
-
+clear_output()
 
 import gradio
 gradio.strings.en["SHARE_LINK_DISPLAY"] = ""
@@ -189,34 +183,25 @@ studio_theme = gradio.themes.Soft(
     primary_hue = "teal",
 )
 
-import random
-
-def random_response(message, history):
-    return random.choice(["Yes", "No"])
 
 scene = gradio.ChatInterface(
-    fn=process_chatbot, 
-    type="messages"
-).launch()
+    process_chatbot,
+    type="messages",
+    chatbot = gradio.Chatbot(
+        height = 325,
+        label = "UNICEF Studio Chat",
+    ),
+    textbox = gradio.Textbox(
+        placeholder = "Message UNICEF Chat",
+        container = False,
+    ),
+    title = None,
+    theme = studio_theme,
+    examples = None,
+    cache_examples = False,
+    retry_btn = None,
+    undo_btn = "Remove Previous Message",
+    clear_btn = "Restart Entire Chat",
+)
 
-# scene = gradio.ChatInterface(
-#     random_response,
-#     type="messages",
-#     chatbot = gradio.Chatbot(
-#         height = 325,
-#         label = "UNICEF Studio Chat",
-#     ),
-#     textbox = gradio.Textbox(
-#         placeholder = "Message UNICEF Chat",
-#         container = False,
-#     ),
-#     title = None,
-#     theme = studio_theme,
-#     examples = None,
-#     cache_examples = False,
-#     retry_btn = None,
-#     undo_btn = "Remove Previous Message",
-#     clear_btn = "Restart Entire Chat",
-# )
-
-# scene.launch(debug=True)#(quiet = True)
+scene.launch(quiet = True)#(debug=True)
