@@ -187,14 +187,14 @@ studio_theme = gradio.themes.Soft(
 scene = gradio.ChatInterface(
     process_chatbot,
     type="messages",
-    chatbot = gradio.Chatbot(
-        height = 325,
-        label = "UNICEF Studio Chat",
-    ),
-    textbox = gradio.Textbox(
-        placeholder = "Message UNICEF Chat",
-        container = False,
-    ),
+    # chatbot = gradio.Chatbot(
+    #     height = 325,
+    #     label = "UNICEF Studio Chat",
+    # ),
+    # textbox = gradio.Textbox(
+    #     placeholder = "Message UNICEF Chat",
+    #     container = False,
+    # ),
     title = None,
     theme = studio_theme,
     examples = None,
