@@ -58,10 +58,9 @@ import re
 from llama_index.core.vector_stores import MetadataFilter, MetadataFilters, FilterOperator
 from llama_index.core.retrievers import VectorIndexRetriever
 
-
-
-
-#llms and query engines
+#logging
+from llama_index.core import set_global_handler
+set_global_handler("literalai")
 
 # from llama_index.llms.llama_cpp import LlamaCPP
 from llama_index.core.query_engine import RetrieverQueryEngine
