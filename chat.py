@@ -7,7 +7,7 @@ import sys
 os.environ["GRADIO_ANALYTICS_ENABLED"] = "False"
 os.environ["LITERAL_API_KEY"] = "lsk_Zr7hzZASa388Pl2uYUUNzJdYHNJXznumk8tOZrvLkLE"
 MODEL_NAME = "meta-llama/Meta-Llama-3-8B-Instruct"
-URI = "http://ec2-63-176-97-200.eu-central-1.compute.amazonaws.com:19530"
+URI = "http://ec2-16-16-99-160.eu-north-1.compute.amazonaws.com:19530"
 
 print("Installing packages for UNICEF Studio ... Please wait 2 minutes ...")
 
@@ -91,13 +91,17 @@ def query_store(query_str, index, nodes, embed_model, vector_store, filters, llm
     emb_pants_str = "Represent this sentence for searching relevant passages: "
     query_embedding = embed_model.get_query_embedding(f"{emb_pants_str}{query_str}")
 
-    metadata_filters = MetadataFilters(
-    filters = [MetadataFilter(
-        key=filter['metadata_key'], 
-        value = filter['metadata_value'], 
-        operator = FilterOperator.EQ) 
-        for filter in filters if filter['metadata_key']]
-    )
+    metadata_filters = None
+    if filters:
+        metadata_filters = MetadataFilters(
+            filters = [MetadataFilter(
+                key=filter['metadata_key'],
+                value = filter['metadata_value'],
+                operator = FilterOperator.EQ)
+                for filter in filters if filter['metadata_key']]
+        )
+    else: 
+        metadata_filters = None
 
     ###################### LLM based ###########
 
@@ -172,9 +176,9 @@ gradio.strings.en["SHARE_LINK_DISPLAY"] = ""
 
 def process_chatbot(message, history):
     
-    filters = [{'metadata_key' : 'country_name', 'metadata_value' : 'Malawi'},
-           {'metadata_key' : 'year', 'metadata_value' : 2019}]
-    
+    # filters = [{'metadata_key' : 'country_name', 'metadata_value' : 'Malawi'},
+    #        {'metadata_key' : 'year', 'metadata_value' : 2019}]
+    filters = []
     return query_store(message, indices[0], nodes, embed_model, vector_store, filters, llm, callback_manager, stats = False, viz = False)
 
 #BUG:Data incompatible with messages format. Each message should be a dictionary with 'role' and 'content' keys or a ChatMessage object."
