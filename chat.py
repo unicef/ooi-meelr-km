@@ -207,4 +207,4 @@ scene = gradio.ChatInterface(
     clear_btn = "Restart Entire Chat",
 )
 
-scene.launch(quiet = True)#(debug=True)
+scene.launch(debug=True)#(quiet = True)
