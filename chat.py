@@ -6,6 +6,7 @@ import os
 import sys
 os.environ["GRADIO_ANALYTICS_ENABLED"] = "False"
 os.environ["LITERAL_API_KEY"] = "lsk_Zr7hzZASa388Pl2uYUUNzJdYHNJXznumk8tOZrvLkLE"
+os.environ["HF_TOKEN"] = "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"
 MODEL_NAME = "meta-llama/Meta-Llama-3-8B-Instruct"
 URI = "http://ec2-16-16-99-160.eu-north-1.compute.amazonaws.com:19530"
 
