@@ -41,13 +41,17 @@ def query_store(query_str, index, nodes, embed_model, vector_store, filters, llm
     emb_pants_str = "Represent this sentence for searching relevant passages: "
     query_embedding = embed_model.get_query_embedding(f"{emb_pants_str}{query_str}")
 
-    metadata_filters = MetadataFilters(
-    filters = [MetadataFilter(
-        key=filter['metadata_key'], 
-        value = filter['metadata_value'], 
-        operator = FilterOperator.EQ) 
-        for filter in filters if filter['metadata_key']]
-    )
+    metadata_filters = None
+    if filters:
+        metadata_filters = MetadataFilters(
+            filters = [MetadataFilter(
+                key=filter['metadata_key'],
+                value = filter['metadata_value'],
+                operator = FilterOperator.EQ)
+                for filter in filters if filter['metadata_key']]
+        )
+    else: 
+        metadata_filters = None
 
     ###################### LLM based ###########
 
@@ -66,4 +70,4 @@ def query_store(query_str, index, nodes, embed_model, vector_store, filters, llm
    
     response = query_engine.query(query_str)
 
-    return response
+    return str(response)
