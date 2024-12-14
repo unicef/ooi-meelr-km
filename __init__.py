@@ -1,2 +1,2 @@
 #UNICEF Studio Chatbot
-from .utils.py import *
+from .utils import *
