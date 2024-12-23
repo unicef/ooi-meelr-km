@@ -1,0 +1,11 @@
+dependencies:
+  - python=3.10.12
+  - pip
+  - pip:
+    # - transformers<4.47.1
+    - llama-index
+    - pymilvus>=2.4.2
+    - llama-index-vector-stores-milvus
+    - llama-index-embeddings-huggingface
+    - llama-index-llms-huggingface-api
+    - "huggingface_hub[inference]"

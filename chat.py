@@ -8,7 +8,7 @@ os.environ["GRADIO_ANALYTICS_ENABLED"] = "False"
 os.environ["LITERAL_API_KEY"] = "lsk_Zr7hzZASa388Pl2uYUUNzJdYHNJXznumk8tOZrvLkLE"
 os.environ["HF_TOKEN"] = "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"
 MODEL_NAME = "meta-llama/Meta-Llama-3-8B-Instruct"
-URI = "http://ec2-13-50-105-226.eu-north-1.compute.amazonaws.com:19530"
+URI = "http://ec2-13-53-186-241.eu-north-1.compute.amazonaws.com:19530"
 
 print("Installing packages for UNICEF Studio ... Please wait 2 minutes ...")
 
