@@ -141,6 +141,8 @@ Settings.embed_model = embed_model
 
 llm = HuggingFaceInferenceAPI(
     model_name=MODEL_NAME,
+    context_window=1024 * 8 - 512, #tokens
+    num_output=512, #tokens
 )
 Settings.llm = llm
 
